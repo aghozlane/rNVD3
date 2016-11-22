@@ -1,11 +1,11 @@
 (function(d3) {
-  var cie = d3.cie = {};
+  var cie = d3b.cie = {};
 
   cie.lab = function(l, a, b) {
     return arguments.length === 1
         ? (l instanceof Lab ? lab(l.l, l.a, l.b)
         : (l instanceof Lch ? lch_lab(l.l, l.c, l.h)
-        : rgb_lab((l = d3.rgb(l)).r, l.g, l.b)))
+        : rgb_lab((l = d3b.rgb(l)).r, l.g, l.b)))
         : lab(+l, +a, +b);
   };
 
@@ -13,7 +13,7 @@
     return arguments.length === 1
         ? (l instanceof Lch ? lch(l.l, l.c, l.h)
         : (l instanceof Lab ? lab_lch(l.l, l.a, l.b)
-        : lab_lch((l = rgb_lab((l = d3.rgb(l)).r, l.g, l.b)).l, l.a, l.b)))
+        : lab_lch((l = rgb_lab((l = d3b.rgb(l)).r, l.g, l.b)).l, l.a, l.b)))
         : lch(+l, +c, +h);
   };
 
@@ -109,7 +109,7 @@
     x = lab_xyz(x) * X;
     y = lab_xyz(y) * Y;
     z = lab_xyz(z) * Z;
-    return d3.rgb(
+    return d3b.rgb(
       xyz_rgb( 3.2404542 * x - 1.5371385 * y - 0.4985314 * z),
       xyz_rgb(-0.9692660 * x + 1.8760108 * y + 0.0415560 * z),
       xyz_rgb( 0.0556434 * x - 0.2040259 * y + 1.0572252 * z)

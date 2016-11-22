@@ -1,6 +1,6 @@
-d3.hive = {};
+d3b.hive = {};
 
-d3.hive.link = function() {
+d3b.hive.link = function() {
   var source = function(d) { return d.source; },
       target = function(d) { return d.target; },
       angle = function(d) { return d.angle; },

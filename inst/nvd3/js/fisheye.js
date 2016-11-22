@@ -1,5 +1,5 @@
 (function() {
-  d3.fisheye = {
+  d3b.fisheye = {
     scale: function(scaleType) {
       return d3_fisheye_scale(scaleType(), 3, 0);
     },
@@ -54,7 +54,7 @@
       var x = scale(_),
           left = x < a,
           v,
-          range = d3.extent(scale.range()),
+          range = d3b.extent(scale.range()),
           min = range[0],
           max = range[1],
           m = left ? a - min : max - a;
@@ -81,6 +81,6 @@
     fisheye.nice = scale.nice;
     fisheye.ticks = scale.ticks;
     fisheye.tickFormat = scale.tickFormat;
-    return d3.rebind(fisheye, scale, "domain", "range");
+    return d3b.rebind(fisheye, scale, "domain", "range");
   }
 })();

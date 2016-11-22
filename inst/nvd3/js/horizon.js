@@ -1,5 +1,5 @@
 (function() {
-  d3.horizon = function() {
+  d3b.horizon = function() {
     var bands = 1, // between 1 and 5, typically
         mode = "offset", // or mirror
         interpolate = "linear", // or basis, monotone, step-before, etc.
@@ -9,14 +9,14 @@
         h = 40,
         duration = 0;
 
-    var color = d3.scale.linear()
+    var color = d3b.scale.linear()
         .domain([-1, 0, 1])
         .range(["#d62728", "#fff", "#1f77b4"]);
 
     // For each small multiple…
     function horizon(g) {
       g.each(function(d, i) {
-        var g = d3.select(this),
+        var g = d3b.select(this),
             n = 2 * bands + 1,
             xMin = Infinity,
             xMax = -Infinity,
@@ -37,8 +37,8 @@
         });
 
         // Compute the new x- and y-scales, and transform.
-        var x1 = d3.scale.linear().domain([xMin, xMax]).range([0, w]),
-            y1 = d3.scale.linear().domain([0, yMax]).range([0, h * bands]),
+        var x1 = d3b.scale.linear().domain([xMin, xMax]).range([0, w]),
+            y1 = d3b.scale.linear().domain([0, yMax]).range([0, h * bands]),
             t1 = d3_horizonTransform(bands, h, mode);
 
         // Retrieve the old scales, if this is an update.
@@ -78,7 +78,7 @@
 
         // Instantiate each copy of the path with different transforms.
         var path = g.select("g").selectAll("path")
-            .data(d3.range(-1, -bands - 1, -1).concat(d3.range(1, bands + 1)), Number);
+            .data(d3b.range(-1, -bands - 1, -1).concat(d3b.range(1, bands + 1)), Number);
 
         var d0 = d3_horizonArea
             .interpolate(interpolate)
@@ -112,7 +112,7 @@
         // Stash the new scales.
         this.__chart__ = {x: x1, y: y1, t: t1, id: id};
       });
-      d3.timer.flush();
+      d3b.timer.flush();
     }
 
     horizon.duration = function(x) {
@@ -173,7 +173,7 @@
     return horizon;
   };
 
-  var d3_horizonArea = d3.svg.area(),
+  var d3_horizonArea = d3b.svg.area(),
       d3_horizonId = 0;
 
   function d3_horizonX(d) {
