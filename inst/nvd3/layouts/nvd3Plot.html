@@ -5,7 +5,7 @@
       var opts = {{{ myparams }}},
         data = {{{ data }}}
   
-      var data = d3.nest()
+      var data = d3b.nest()
         .key(function(d){
           return opts.group === undefined ? 'main' : d[opts.group]
         })
@@ -24,7 +24,7 @@
         
         {{{ yAxis }}}
       
-       d3.select("#" + opts.id)
+       d3b.select("#" + opts.id)
         .append('svg')
         .datum(data)
         .transition().duration(500)
