@@ -1,4 +1,2 @@
 exportPattern("^[[:alpha:]]+")
-import(rjson)
-import(whisker)
-import(plyr)
+
