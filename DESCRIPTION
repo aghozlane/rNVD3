@@ -7,4 +7,5 @@ Author: Ramnath Vaidyanathan
 Maintainer: Ramnath Vaidyanathan <ramnath.vaidya@gmail.com>
 Description: This package provides a familiar R interface to create interactive plots using
   NVD3.js
+Imports: rjson
 License: MIT
