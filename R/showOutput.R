@@ -1,6 +1,6 @@
 showOutput <- function(outputId) {
   # Add javascript resources
-  suppressMessages(singleton(addResourcePath("nvd3", system.file('nvd3', package='rNVD3'))))
+  suppressMessages(singleton(addResourcePath("nvd3", system.file('nvd3', package='rNVD3shaman'))))
     
   div(class="NVD3", 
     # Add Javascripts

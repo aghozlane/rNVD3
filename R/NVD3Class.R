@@ -39,7 +39,7 @@ NVD3 <- setRefClass('NVD3', fields = list(params = 'list'), methods = list(
     return(params)
   },
   html = function(chartId = NULL){
-    template_file = system.file('nvd3', 'layouts', 'nvd3Plot.html', package = 'rNVD3')
+    template_file = system.file('nvd3', 'layouts', 'nvd3Plot.html', package = 'rNVD3shaman')
     template = paste(readLines(template_file, warn = F), collapse = '\n')
     if (is.null(chartId)){
       chartId <- params$id
@@ -63,7 +63,7 @@ NVD3 <- setRefClass('NVD3', fields = list(params = 'list'), methods = list(
     } else {
       params$id <<- chartId
     }
-    template_file = system.file('nvd3', 'layouts', 'nvd3.html', package = 'rNVD3')
+    template_file = system.file('nvd3', 'layouts', 'nvd3.html', package = 'rNVD3shaman')
     template = paste(readLines(template_file, warn = F), collapse = '\n')
     partials = list(nvd3Plot = .self$html(chartId))
     html = capture.output(cat(whisker.render(template, partials = partials)))
@@ -78,7 +78,7 @@ NVD3 <- setRefClass('NVD3', fields = list(params = 'list'), methods = list(
       system(sprintf("open %s", tf))
     } else {
       assign(".nvd3_object", .self$copy(), envir = .GlobalEnv) 
-      shiny::runApp(file.path(system.file(package = "rNVD3"), "shiny"))
+      shiny::runApp(file.path(system.file(package = "rNVD3shaman"), "shiny"))
     }
   }
 ))
